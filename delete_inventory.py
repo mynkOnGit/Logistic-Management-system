@@ -44,22 +44,22 @@ def delete():
     headingFrame1 = Frame(root, bg="#dfdee2", bd=5)
     headingFrame1.place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.13)
 
-    headingLabel = Label(headingFrame1, text="Delete Inventory", font='Helvetica 14 bold', bg="#010103", fg='white',)
+    headingLabel = Label(headingFrame1, text="Delete Inventory", font='Helvetica 14 bold', bg="#00a8e8", fg='white',)
     headingLabel.place(relx=0, rely=0, relwidth=1, relheight=1)
 
-    labelFrame = Frame(root, bg="#010103")
+    labelFrame = Frame(root, bg="#00a8e8")
     labelFrame.place(relx=0.25, rely=0.4, relwidth=0.5, relheight=0.2)
 
-    lb2 = Label(labelFrame, text="Product id:", font='Helvetica 11 bold', bg="#000000", fg='white')
+    lb2 = Label(labelFrame, text="Product id:", font='Helvetica 11 bold', bg="#00a8e8", fg='white')
     lb2.place(relx=0.05, rely=0.5)
 
     songInfo1 = Entry(labelFrame)
     songInfo1.place(relx=0.3, rely=0.5, relwidth=0.62)
 
-    SubmitBtn = Button(root, text="Submit", font='Helvetica 11 bold', bg="#010103", fg='white', command=deleteinventory)
+    SubmitBtn = Button(root, text="Submit", font='Helvetica 11 bold', bg="#00a8e8", fg='white', command=deleteinventory)
     SubmitBtn.place(relx=0.28, rely=0.75, relwidth=0.18, relheight=0.08)
 
-    quitBtn = Button(root, text="Quit", font='Helvetica 11 bold', bg="#010103", fg='white', command=root.destroy)
+    quitBtn = Button(root, text="Quit", font='Helvetica 11 bold', bg="#00a8e8", fg='white', command=root.destroy)
     quitBtn.place(relx=0.53, rely=0.75, relwidth=0.18, relheight=0.08)
 
     root.mainloop()

@@ -27,7 +27,7 @@ def delete():
     global img, songInfo1, Canvas1, con, cur, root
 
     root = Tk()
-    root.title("Delete Music Record")
+    root.title("Delete Order Record")
     root.minsize(width=400, height=400)
     root.geometry("800x600")
 
@@ -36,10 +36,10 @@ def delete():
     headingFrame1 = Frame(root, bg="#dfdee2", bd=5)
     headingFrame1.place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.13)
 
-    headingLabel = Label(headingFrame1, text="Delete Order", font='Helvetica 14 bold', bg="#d7a26c", fg='black',)
+    headingLabel = Label(headingFrame1, text="Delete Order", font='Helvetica 14 bold', bg="#00a8e8", fg='black',)
     headingLabel.place(relx=0, rely=0, relwidth=1, relheight=1)
 
-    labelFrame = Frame(root, bg="#d7a26c")
+    labelFrame = Frame(root, bg="#00a8e8")
     labelFrame.place(relx=0.25, rely=0.4, relwidth=0.5, relheight=0.2)
 
     lb2 = Label(labelFrame, text="order id:", font='Helvetica 11 bold', bg="#000000", fg='white')
@@ -48,10 +48,10 @@ def delete():
     songInfo1 = Entry(labelFrame)
     songInfo1.place(relx=0.3, rely=0.5, relwidth=0.62)
 
-    SubmitBtn = Button(root, text="Submit", font='Helvetica 11 bold', bg="#d7a26c", fg='black', command=deleteorder)
+    SubmitBtn = Button(root, text="Submit", font='Helvetica 11 bold', bg="#00a8e8", fg='black', command=deleteorder)
     SubmitBtn.place(relx=0.28, rely=0.75, relwidth=0.18, relheight=0.08)
 
-    quitBtn = Button(root, text="Quit", font='Helvetica 11 bold', bg="#d7a26c", fg='black', command=root.destroy)
+    quitBtn = Button(root, text="Quit", font='Helvetica 11 bold', bg="#00a8e8", fg='black', command=root.destroy)
     quitBtn.place(relx=0.53, rely=0.75, relwidth=0.18, relheight=0.08)
 
     root.mainloop()

@@ -15,19 +15,24 @@ def validate_login():
         messagebox.showerror("Error", "Please enter username and password.")
         return False
 
-    # Check if the username and password exist in the database
-    query = "SELECT * FROM login WHERE username = %s AND password = %s"
-    values = (username, password)
-
-    cur.execute(query, values)
-    result = cur.fetchone()
-
-    if result:
-        messagebox.showinfo("Success", "Login successful.")
+    if username == 'admin' and password == 'admin':
+        messagebox.showinfo("Success", "Admin login successful.")
         root.destroy()
-        import Mainpage
+        os.system("python admin_page.py")
     else:
-        messagebox.showerror("Error", "Invalid username or password.")
+        # Check if the username and password exist in the database
+        query = "SELECT * FROM login WHERE username = %s AND password = %s"
+        values = (username, password)
+
+        cur.execute(query, values)
+        result = cur.fetchone()
+
+        if result:
+            messagebox.showinfo("Success", "Login successful.")
+            root.destroy()
+            import Mainpage
+        else:
+            messagebox.showerror("Error", "Invalid username or password.")
 
 
 def forgot_password():
@@ -41,7 +46,7 @@ def forgot_password():
     forgot_frame = tk.Frame(root_forgot, bg="#2f2e2e", bd=5)
     forgot_frame.place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.2)
 
-    forgot_label = tk.Label(forgot_frame, text="Forgot Password", font='Helvetica 14 bold', bg="#d7a26c", fg='black')
+    forgot_label = tk.Label(forgot_frame, text="Forgot Password", font='Helvetica 14 bold', bg="#00a8e8", fg='black')
     forgot_label.place(relx=0, rely=0, relwidth=1, relheight=1)
 
     username_label = tk.Label(root_forgot, text="Username:", font='Helvetica 12 bold')
@@ -110,34 +115,34 @@ def login_page():
     headingFrame1 = tk.Frame(root, bg="#2f2e2e", bd=5)
     headingFrame1.place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.13)
 
-    headingLabel = tk.Label(headingFrame1, text="LOGIN PAGE", font='Helvetica 14 bold', bg="#d7a26c", fg='black')
+    headingLabel = tk.Label(headingFrame1, text="LOGIN PAGE", font='Helvetica 14 bold', bg="#00a8e8", fg='black')
     headingLabel.place(relx=0, rely=0, relwidth=1, relheight=1)
 
-    labelFrame = tk.Frame(root, bg="#d7a26c")
+    labelFrame = tk.Frame(root, bg="#00a8e8")
     labelFrame.place(relx=0.1, rely=0.4, relwidth=0.8, relheight=0.4)
 
-    lb1 = tk.Label(labelFrame, text="Username:", font='Helvetica 13 bold', bg="#d7a26c", fg='black')
+    lb1 = tk.Label(labelFrame, text="Username:", font='Helvetica 13 bold', bg="#00a8e8", fg='black')
     lb1.place(relx=0.05, rely=0.3, relheight=0.08)
 
     songInfo1 = tk.Entry(labelFrame)
     songInfo1.place(relx=0.3, rely=0.3, relwidth=0.62, relheight=0.08)
 
-    lb2 = Label(labelFrame, text="Password:", font='Helvetica 13 bold', bg="#d7a26c", fg='black')
+    lb2 = Label(labelFrame, text="Password:", font='Helvetica 13 bold', bg="#00a8e8", fg='black')
     lb2.place(relx=0.05, rely=0.5, relheight=0.08)
 
     songInfo2 = Entry(labelFrame, show="*")
     songInfo2.place(relx=0.3, rely=0.5, relwidth=0.62, relheight=0.08)
 
-    loginBtn = Button(root, text="Login", font='Helvetica 12 bold', bg='#d7a26c', fg='black', command=validate_login)
+    loginBtn = Button(root, text="Login", font='Helvetica 12 bold', bg='#00a8e8', fg='black', command=validate_login)
     loginBtn.place(relx=0.30, rely=0.7, relwidth=0.18, relheight=0.08)
 
-    singupBtn = Button(root, text="Sign up", font='Helvetica 12 bold', bg='#d7a26c', fg='black', command=login_pa)
+    singupBtn = Button(root, text="Sign up", font='Helvetica 12 bold', bg='#00a8e8', fg='black', command=login_pa)
     singupBtn.place(relx=0.10, rely=0.7, relwidth=0.18, relheight=0.08)
 
-    forgotBtn = Button(root, text="Forgot Password", font='Helvetica 10 bold', bg='#d7a26c', fg='black', command=forgot_password)
+    forgotBtn = Button(root, text="Forgot Password", font='Helvetica 10 bold', bg='#00a8e8', fg='black', command=forgot_password)
     forgotBtn.place(relx=0.50, rely=0.7, relwidth=0.18, relheight=0.08)
 
-    quitBtn = Button(root, text="Quit", font='Helvetica 12 bold', bg='#d7a26c', fg='black', command=root.destroy)
+    quitBtn = Button(root, text="Quit", font='Helvetica 12 bold', bg='#00a8e8', fg='black', command=root.destroy)
     quitBtn.place(relx=0.70, rely=0.7, relwidth=0.18, relheight=0.08)
 
     root.mainloop()

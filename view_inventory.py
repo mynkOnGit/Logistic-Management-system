@@ -79,8 +79,30 @@ def on_treeview_click(event):
         outgoing_stock = int(values[4])
         update_stock("outgoing", product_id, stock_level, incoming_stock, outgoing_stock)
 
+def search_product_by_name():
+    product_name = search_name_entry.get()
+    if not product_name:
+        messagebox.showinfo("Input Error", "Please enter a Product Name")
+        return
+
+    try:
+        cur.execute("SELECT * FROM products WHERE name LIKE %s", ('%' + product_name + '%',))
+        rows = cur.fetchall()
+        con.commit()
+        if not rows:
+            messagebox.showinfo("No Results", "No product found with this name")
+            return
+        # Clear the treeview
+        for row in tree.get_children():
+            tree.delete(row)
+        # Insert search results
+        for row in rows:
+            tree.insert("", tk.END, values=row + ('Update Incoming', 'Update Outgoing'))
+    except Exception as e:
+        messagebox.showinfo("Error", f"Failed to fetch the product from the database: {str(e)}")
+
 def view_all_songs():
-    global tree, search_id_entry
+    global tree, search_id_entry, search_name_entry
     root = tk.Tk()
     root.title("View All Inventory")
     root.minsize(width=400, height=400)
@@ -95,6 +117,12 @@ def view_all_songs():
     search_id_entry.grid(row=0, column=1, padx=5)
     search_id_btn = tk.Button(search_frame, text="Search", command=search_product_by_id)
     search_id_btn.grid(row=0, column=2, padx=5)
+
+    tk.Label(search_frame, text="Search by Product Name:").grid(row=1, column=0, padx=5)
+    search_name_entry = tk.Entry(search_frame)
+    search_name_entry.grid(row=1, column=1, padx=5)
+    search_name_btn = tk.Button(search_frame, text="Search", command=search_product_by_name)
+    search_name_btn.grid(row=1, column=2, padx=5)
 
     refresh_btn = tk.Button(search_frame, text="Refresh", command=refresh_treeview)
     refresh_btn.grid(row=2, column=1, pady=10)

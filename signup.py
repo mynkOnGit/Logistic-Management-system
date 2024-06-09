@@ -83,40 +83,40 @@ def addsong():
     headingFrame1 = tk.Frame(root, bg="#2f2e2e", bd=5)
     headingFrame1.place(relx=0.25, rely=0.1, relwidth=0.5, relheight=0.13)
 
-    headingLabel = tk.Label(headingFrame1, text="SIGN UP PAGE", font='Helvetica 14 bold', bg="#d7a26c", fg='black')
+    headingLabel = tk.Label(headingFrame1, text="SIGN UP PAGE", font='Helvetica 14 bold', bg="#00a8e8", fg='black')
     headingLabel.place(relx=0, rely=0, relwidth=1, relheight=1)
 
-    labelFrame = tk.Frame(root, bg="#d7a26c")
+    labelFrame = tk.Frame(root, bg="#00a8e8")
     labelFrame.place(relx=0.1, rely=0.4, relwidth=0.8, relheight=0.4)
 
-    lb1 = tk.Label(labelFrame, text="Email id:", font='Helvetica 13 bold', bg="#d7a26c", fg='black')
+    lb1 = tk.Label(labelFrame, text="Email id:", font='Helvetica 13 bold', bg="#00a8e8", fg='black')
     lb1.place(relx=0.05, rely=0.10, relheight=0.08)
 
     songInfo1 = tk.Entry(labelFrame)
     songInfo1.place(relx=0.3, rely=0.10, relwidth=0.62, relheight=0.08)
 
-    lb2 = Label(labelFrame, text="Username:", font='Helvetica 13 bold', bg="#d7a26c", fg='black')
+    lb2 = Label(labelFrame, text="Username:", font='Helvetica 13 bold', bg="#00a8e8", fg='black')
     lb2.place(relx=0.05, rely=0.26, relheight=0.08)
 
     songInfo2 = Entry(labelFrame)
     songInfo2.place(relx=0.3, rely=0.26, relwidth=0.62, relheight=0.08)
 
-    lb3 = Label(labelFrame, text="Password:", font='Helvetica 13 bold', bg="#d7a26c", fg='black')
+    lb3 = Label(labelFrame, text="Password:", font='Helvetica 13 bold', bg="#00a8e8", fg='black')
     lb3.place(relx=0.05, rely=0.42, relheight=0.08)
 
     songInfo3 = Entry(labelFrame, show="*")  # Use show="*" to hide password input
     songInfo3.place(relx=0.3, rely=0.42, relwidth=0.62, relheight=0.08)
 
-    lb4 = Label(labelFrame, text="Confirm Password:", font='Helvetica 13 bold', bg="#d7a26c", fg='black')
+    lb4 = Label(labelFrame, text="Confirm Password:", font='Helvetica 13 bold', bg="#00a8e8", fg='black')
     lb4.place(relx=0.05, rely=0.58, relheight=0.08)
 
     songInfo4 = Entry(labelFrame, show="*")  # Use show="*" to hide password input
     songInfo4.place(relx=0.3, rely=0.58, relwidth=0.62, relheight=0.08)
 
-    SubmitBtn = Button(root, text="Submit", font='Helvetica 12 bold', bg='#d7a26c', fg='black', command=songadd)
+    SubmitBtn = Button(root, text="Submit", font='Helvetica 12 bold', bg='#00a8e8', fg='black', command=songadd)
     SubmitBtn.place(relx=0.28, rely=0.9, relwidth=0.18, relheight=0.08)
 
-    quitBtn = Button(root, text="Quit", font='Helvetica 12 bold', bg='#d7a26c', fg='black', command=root.destroy)
+    quitBtn = Button(root, text="Quit", font='Helvetica 12 bold', bg='#00a8e8', fg='black', command=root.destroy)
     quitBtn.place(relx=0.53, rely=0.9, relwidth=0.18, relheight=0.08)
 
     root.mainloop()

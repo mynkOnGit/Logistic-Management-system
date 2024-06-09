@@ -9,11 +9,11 @@ search_entry = None
 search_option = None
 start_date_entry = None
 end_date_entry = None
-tree=None
+tree = None
 
 
 def search_data():
-    global search_entry, search_option, start_date_entry, end_date_entry,tree
+    global search_entry, search_option, start_date_entry, end_date_entry, tree
     keyword = search_entry.get()
     search_by = search_option.get()
 
@@ -60,8 +60,38 @@ def search_data():
         messagebox.showinfo("Error", f"Failed to fetch data from the database: {str(e)}")
 
 
+def reset_filters():
+    global search_entry, search_option, start_date_entry, end_date_entry, tree
+
+    search_entry.delete(0, tk.END)
+    search_option.set('')
+    start_date_entry.delete(0, tk.END)
+    end_date_entry.delete(0, tk.END)
+    populate_tree_with_all_data()
+
+
+def populate_tree_with_all_data():
+    global tree
+
+    tree.delete(*tree.get_children())
+
+    try:
+        cur.execute("""SELECT orders.order_id, orders.order_date, shipments.tracking_number, shipments.current_location, shipments.shipment_id, orders.description
+                       FROM orders
+                       INNER JOIN shipments ON orders.order_id = shipments.order_id;
+                    """)
+
+        rows = cur.fetchall()
+        con.commit()
+
+        for i in rows:
+            tree.insert("", tk.END, values=i)
+    except Exception as e:
+        messagebox.showinfo("Error", f"Failed to fetch orders from the database: {str(e)}")
+
+
 def view_all_songs():
-    global search_entry, search_option, start_date_entry, end_date_entry,tree
+    global search_entry, search_option, start_date_entry, end_date_entry, tree
     root = tk.Tk()
     root.title("View All Tracking")
     root.minsize(width=400, height=400)
@@ -94,6 +124,9 @@ def view_all_songs():
     search_button = tk.Button(search_frame, text="Search", command=search_data)
     search_button.grid(row=0, column=7, padx=5)
 
+    reset_button = tk.Button(search_frame, text="Reset Filter Results", command=reset_filters)
+    reset_button.grid(row=0, column=8, padx=5)
+
     tree = ttk.Treeview(root, column=("c1", "c2", "c3", "c4", "c5", "c6"), show='headings')
     tree.column("#1", anchor=tk.CENTER)
     tree.heading("#1", text="Order id")
@@ -109,21 +142,9 @@ def view_all_songs():
     tree.heading("#6", text="Description:")
     tree.pack(expand=True, fill=tk.BOTH)
 
-    try:
-        cur.execute("""SELECT orders.order_id, orders.order_date, shipments.tracking_number, shipments.current_location, shipments.shipment_id, orders.description
-                           FROM orders
-                           INNER JOIN shipments ON orders.order_id = shipments.order_id;
-            """)
+    populate_tree_with_all_data()
 
-        rows = cur.fetchall()
-        con.commit()
-
-        for i in rows:
-            tree.insert("", tk.END, values=i)
-    except Exception as e:
-        messagebox.showinfo("Error", f"Failed to fetch orders from the database: {str(e)}")
-
-    quit_btn = tk.Button(root, text="Quit", bg='#f7f1e3', fg='black', command=root.destroy)
+    quit_btn = tk.Button(root, text="Quit", bg='#00a8e8', fg='black', command=root.destroy)
     quit_btn.place(relx=0.4, rely=0.9, relwidth=0.18, relheight=0.08)
 
     root.mainloop()
@@ -131,6 +152,3 @@ def view_all_songs():
 
 if __name__ == "__main__":
     view_all_songs()
-
-
-

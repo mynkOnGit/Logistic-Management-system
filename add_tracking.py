@@ -1,3 +1,4 @@
+import os
 from tkinter import *
 from tkinter import ttk
 import tkinter.messagebox as MessageBox
@@ -111,7 +112,7 @@ root = Tk()
 root.geometry('800x600')
 root.title('Logistic Management System')
 
-header = Label(root, text="Add Tracking", font=("Helvetica", 20, "bold"), bg="blue", fg="white")
+header = Label(root, text="Manage Tracking", font=("Helvetica", 20, "bold"), bg="#00a8e8", fg="white")
 header.pack(fill=X)
 
 frame = Frame(root)
@@ -137,12 +138,12 @@ e_date.grid(row=4, column=1, padx=10)
 button_frame = Frame(root)
 button_frame.pack(pady=20)
 
-Button(button_frame, text="Insert", font=("italic", 12), bg="blue", fg="white", command=insert).grid(row=0, column=0, padx=5)
-Button(button_frame, text="Delete", font=("italic", 12), bg="blue", fg="white", command=delete).grid(row=0, column=1, padx=5)
-Button(button_frame, text="Update", font=("italic", 12), bg="blue", fg="white", command=update).grid(row=0, column=2, padx=5)
-Button(button_frame, text="Get", font=("italic", 12), bg="blue", fg="white", command=get).grid(row=0, column=3, padx=5)
-Button(button_frame, text="Clear", font=("italic", 12), bg="blue", fg="white", command=clear_fields).grid(row=0, column=4, padx=5)
-Button(button_frame, text="Menu", font=("italic", 12), bg="blue", fg="white", command=mainpage).grid(row=0, column=5, padx=5)
+Button(button_frame, text="Insert", font=("italic", 12), bg="#00a8e8", fg="white", command=insert).grid(row=0, column=0, padx=5)
+Button(button_frame, text="Delete", font=("italic", 12), bg="#00a8e8", fg="white", command=delete).grid(row=0, column=1, padx=5)
+Button(button_frame, text="Update", font=("italic", 12), bg="#00a8e8", fg="white", command=update).grid(row=0, column=2, padx=5)
+Button(button_frame, text="Get", font=("italic", 12), bg="#00a8e8", fg="white", command=get).grid(row=0, column=3, padx=5)
+Button(button_frame, text="Clear", font=("italic", 12), bg="#00a8e8", fg="white", command=clear_fields).grid(row=0, column=4, padx=5)
+Button(button_frame, text="Menu", font=("italic", 12), bg="#00a8e8", fg="white", command=mainpage).grid(row=0, column=5, padx=5)
 
 # Create a Treeview widget
 columns = ("Shipment ID", "Order ID", "Tracking No", "Location", "Date")
